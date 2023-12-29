@@ -1,0 +1,72 @@
+{
+    "id": "k74272e",
+    "mac": "22:33:44:55:66:77",
+    "ip": "1.2.3.4",
+    "ip6": "2001:db8:3c4d:15::1",
+    "description": "Miles's phone",
+    "firstSeen": 1518365681,
+    "lastSeen": 1526087474,
+    "manufacturer": "Apple",
+    "os": "iOS",
+    "user": "milesmeraki",
+    "vlan": "100",
+    "ssid": "My SSID",
+    "switchport": "My switch port",
+    "wirelessCapabilities": "802.11b - 2.4 GHz",
+    "smInstalled": true,
+    "recentDeviceMac": "22:33:44:55:66:77",
+    "clientVpnConnections": [
+        {
+            "remoteIp": "1.2.3.4",
+            "connectedAt": 1522613355,
+            "disconnectedAt": 1522613360
+        }
+    ],
+    "lldp": [
+        [
+            "System name",
+            "Some system name"
+        ],
+        [
+            "System description",
+            "Some system description"
+        ],
+        [ "Port ID", "1" ],
+        [
+            "Chassis ID",
+            "00:18:0a:00:00:00"
+        ],
+        [
+            "Port description",
+            "eth0"
+        ],
+        [
+            "System capabilities",
+            "Two-port MAC Relay"
+        ]
+    ],
+    "cdp": [
+        [
+            "System name",
+            "Some system name"
+        ],
+        [
+            "System description",
+            "Some system description"
+        ],
+        [ "Port ID", "1" ],
+        [
+            "Chassis ID",
+            "00:18:0a:00:00:00"
+        ],
+        [
+            "Port description",
+            "eth0"
+        ],
+        [
+            "System capabilities",
+            "Two-port MAC Relay"
+        ]
+    ],
+    "status": "Online"
+}
