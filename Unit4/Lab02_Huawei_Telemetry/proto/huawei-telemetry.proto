@@ -1,0 +1,50 @@
+syntax = "proto3";
+package telemetry;
+
+message Telemetry {
+  string node_id_str = 1;   //0x0a 设备名
+
+  string   subscription_id_str = 2;   //0x12
+  
+  string   sensor_path = 3;    //
+  
+  string   proto_path = 13;     // 采样路径path对应的proto path
+
+  uint64   collection_id = 4;  //0x20
+
+  uint64   collection_start_time = 5;  //0x28
+  
+  // 生成这个Telemetry的message数据的时间戳
+  uint64   msg_timestamp = 6;  //0x30
+
+
+  TelemetryGPBTable data_gpb = 7;  //0x3a 数据编码为GPB时有效，否则为空
+
+  uint64 collection_end_time = 8;  //0x40
+  
+  //采样精度：ms（毫秒）
+  uint32   current_period = 9;
+  //异常描述信息，采样异常时用于上报异常信息
+  string   except_desc = 10;
+  
+  string   product_name = 11; // 产品形态名
+  
+  enum Encoding {
+    Encoding_GPB = 0;
+    Encoding_JSON = 1;
+  };
+  
+  Encoding   encoding =12;    // 数据编码。为GPB时，data_gpb字段有效，否则时data_str字段有效
+  
+  string   data_str = 14;   // 数据编码非GPB时有效，否则为空
+
+}
+
+message TelemetryGPBTable {
+  repeated TelemetryRowGPB row = 1;
+}
+
+message TelemetryRowGPB {
+   uint64 timestamp = 1;
+   bytes content = 11;
+}

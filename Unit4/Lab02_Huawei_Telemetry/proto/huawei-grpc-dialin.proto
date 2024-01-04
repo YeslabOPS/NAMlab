@@ -1,0 +1,33 @@
+syntax = "proto3";
+package huawei_dialin;
+
+service gRPCConfigOper {
+    rpc Subscribe(SubsArgs) returns(stream SubsReply) {};
+    rpc Cancel(CancelArgs) returns(CancelReply) {};
+}
+message Path {
+    string path = 1;
+}
+message SubsArgs {
+    uint64 request_id = 1;
+    uint32 encoding = 2;
+    repeated Path path = 5;
+    uint64 sample_interval = 6;
+    uint64 heartbeat_interval = 7;
+    bool suppress_redundant = 8;
+}
+message SubsReply {
+    uint32 subscription_id = 1;
+    uint64 request_id = 2;
+    string response_code = 3;
+    bytes message = 4;
+}
+message CancelArgs {
+    uint64 request_id = 1;
+    uint32 subscription_id = 2;
+}
+message CancelReply {
+    uint64 request_id = 1;
+    string response_code = 2;
+    string message = 3;
+}
