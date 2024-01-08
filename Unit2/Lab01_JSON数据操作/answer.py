@@ -65,15 +65,22 @@ sample_data =  {
     }
     
 #Task1.1
-
-
+json_data = json.dumps(sample_data, indent=4)
+print('json_data:\n', json_data)
 
 #Task1.2
-
+with open('json_file/data.json', 'w') as f:
+    json.dump(sample_data, f, indent=4)
 
 
 #Task2.1
-
+with open('json_file/client.json') as f:
+    print('client.json:\n', json.load(f))
 
 
 #Task2.2
+print('json_data_python:\n', json.loads(json_data))
+
+
+
+
