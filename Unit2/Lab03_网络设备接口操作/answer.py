@@ -9,19 +9,23 @@ device_info = {
     "password" : 'Huawei@123',
 }
 
-## Task2: 用ConnectHandler初始化链接
-net_connect = ConnectHandler(**device_info)
+## Task2: 定义一个能完成ConnectHandler的初始化链接的函数
+def conn(device_info):
+    return ConnectHandler(**device_info)
 
-## Task3: 为任意接口配置IP地址
-cmd_list = ['system im',
-            'interface GE1/0/9',
-            'undo shut',
-            'undo portswitch',
-            'ip add 2.2.2.2 24']
-for cmd in cmd_list:
-    net_connect.send_command(command_string=cmd,expect_string=r']')
+## Task3: 定义一个可以为任意接口配置IP地址的函数
+def config_if_ip(ssh_hand, if_name, ip_address, ip_mask):
+    cmd_list = ['system im',
+                f'interface {if_name}',
+                'undo shut',
+                'undo portswitch',
+                f'ip add {ip_address} {ip_mask}']
+    for cmd in cmd_list:
+        ssh_hand.send_command(command_string=cmd,expect_string=r']')
 
-## Task4: print输出所有接口的信息
-cmd = 'display ip interface brief'
-print(net_connect.send_command(cmd))
+
+
+## Task4: 思考程序逻辑并调用上述函数来完成自动化接口配置
+net_connect = conn(device_info)
+config_if_ip(net_connect, 'GE1/0/9', '2.2.2.2', '24')
 net_connect.disconnect()
