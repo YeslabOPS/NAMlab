@@ -9,10 +9,14 @@ device_info = {
     "password" : 密码,
 }
 
-## Task2: 用ConnectHandler初始化链接
+## Task2: 定义一个能完成ConnectHandler的初始化链接的函数
 
 
-## Task3: 为任意接口配置IP地址
+
+## Task3: 定义一个可以为任意接口配置IP地址的函数
 
 
-## Task4: print输出所有接口的信息
+
+## Task4: 思考程序逻辑并调用上述函数来完成自动化接口配置
+
+
