@@ -1,7 +1,0 @@
-Value Interface (\S+)
-Value IPAddress (\S+)
-Value Status (\S+)
-Value Protocol (\S+)
-
-Start
-  ^${Interface}\s+${IPAddress}\s+\S+\s+\S+\s+${Status}\s+${Protocol} -> Record
