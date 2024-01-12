@@ -6,7 +6,7 @@
         },
         "subject": "RFC20231215 - add VL226 for VM host",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -41,7 +41,7 @@
             "department": null
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -59,7 +59,7 @@
         },
         "subject": "Request to Shutdown Firewall&Switches in MNLBRANCH1FWAS01",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -94,7 +94,7 @@
             "department": null
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -112,7 +112,7 @@
         },
         "subject": "Critical Vulnerability Found - Action Requires",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -147,7 +147,7 @@
             "department": null
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -165,7 +165,7 @@
         },
         "subject": "Honeypot Access [Critical]",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -187,7 +187,7 @@
             "id": "301"
         },
         "created_by": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -204,7 +204,7 @@
             }
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -222,7 +222,7 @@
         },
         "subject": "Change Request",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -257,7 +257,7 @@
             "department": null
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -275,7 +275,7 @@
         },
         "subject": "RFC20231212 - change load balancer anywhere.angloeastern.com active IP",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -310,7 +310,7 @@
             "department": null
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -328,7 +328,7 @@
         },
         "subject": "\u56de\u590d: A new comment has been added on a case [Case#: 02803928] - Panorama can't push templates after upgrading 10.1.3 firewall to 10.2 version Details: . Validation Error: . profiles -> url-filte - [ ref:_00D7086I1._5004u2zqpkT:ref ]",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -363,7 +363,7 @@
             "department": null
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -381,7 +381,7 @@
         },
         "subject": "SOC Monthly Report - November 2023",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -403,7 +403,7 @@
             "id": "304"
         },
         "created_by": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -420,7 +420,7 @@
             }
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -438,7 +438,7 @@
         },
         "subject": "Check connection from 192.168.0.0/24 and 10.40.14.0/25  to 10.0.40.7?",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -473,7 +473,7 @@
             "department": null
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -491,7 +491,7 @@
         },
         "subject": "NCR-EU23-007 | OVC servers to HPE Infosight",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -526,7 +526,7 @@
             "department": null
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -544,7 +544,7 @@
         },
         "subject": "\u56de\u590d: Quotation for external penetration testing (White-listed)",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -579,7 +579,7 @@
             "department": null
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -597,7 +597,7 @@
         },
         "subject": "Azure Blob Storage: Port 443 for Manila VEEAM backup",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -632,7 +632,7 @@
             "department": null
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -650,7 +650,7 @@
         },
         "subject": "FW: NCR-GER23-003",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -685,7 +685,7 @@
             "department": null
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -703,7 +703,7 @@
         },
         "subject": "\u56de\u590d: Inquiry from  Info Sec Team",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -738,7 +738,7 @@
             "department": null
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
@@ -756,7 +756,7 @@
         },
         "subject": "Fwd: Urgent action required: PAN-OS certificate expiration advisory",
         "technician": {
-            "email_id": "sd-snocsupport@f1.hk",
+            "email_id": "sd-snocsupport@yeslab.hk",
             "phone": null,
             "name": "SNOC Support",
             "mobile": null,
@@ -791,7 +791,7 @@
             "department": null
         },
         "site": {
-            "name": "Anglo-Eastern Ship Management Ltd",
+            "name": "AE Client",
             "id": "632"
         },
         "is_service_request": false,
