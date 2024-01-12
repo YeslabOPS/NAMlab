@@ -13,11 +13,15 @@ dst_path = 'config_back'
 
 def get_login_info(excel_path):
     excel = pd.read_excel(excel_path)
-    # ip, dtype, username, password
     data_list = [excel.loc[i].values.tolist() for i in range(excel.shape[0])]
-    return data_list
+    return data_list # [ip, dtype, username, password]
 
-def back_file(config_dict, dst_path):
+def back_file(config_dict):
+    '''
+    Params
+    # config_dict: {ip : config}
+    # dst_path: 'config_back' and it will be auto create
+    '''
     if not os.path.exists(dst_path):
         os.mkdir(dst_path)
     for ip in config_dict:
@@ -44,12 +48,6 @@ class Net:
     # 基本连接功能
     def connect(self):
         return ConnectHandler(**self.device_info)
-    
-    # 数据输出为JSON
-    def to_json(self, data_dict, file_path):
-        with open(file_path, 'w') as f:
-            # 写文件创建日志
-            json.dump(data_dict, fp=f, indent=4)
 
 
 # Task2. 编写VRP_8类并继承Net类的功能
@@ -74,7 +72,7 @@ if __name__ == "__main__":
                 vrp = VRP_8(*device)
                 config_str = vrp.get_config()
                 vrp.device.disconnect()
-                back_file({device[0]: config_str}, dst_path)
+                back_file({device[0]: config_str})
                 del(vrp)
             except netmiko.exceptions.NetmikoTimeoutException as e:
                 print(f"{device[0]} SSH 连接失败，下一轮继续尝试！")
