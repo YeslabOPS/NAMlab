@@ -1,0 +1,15 @@
+syntax = "proto3";
+package get_arp;
+
+service get_arp {
+  rpc Login_info (arpRequest) returns (arpReply) {}
+}
+
+message arpRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message arpReply {
+  string arp_info = 1;
+}
