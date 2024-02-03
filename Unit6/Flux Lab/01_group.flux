@@ -1,4 +1,4 @@
-from(bucket: "flux_study")
+from(bucket: "study")
   |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
   |> filter(fn: (r) => r["_measurement"] == "F1NET")
   |> filter(fn: (r) => r["_field"] == "bad" or r["_field"] == "busy" or r["_field"] == "good")
