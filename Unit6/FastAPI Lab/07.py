@@ -1,4 +1,4 @@
-# 可选查询参数与必选查询参数
+# POST 消息正文与内容类型定义
 
 import uvicorn
 from fastapi import FastAPI
