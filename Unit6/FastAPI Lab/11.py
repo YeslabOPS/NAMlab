@@ -14,11 +14,13 @@ async def auth_user(username: str, password: str):
     # 使用 MD5 哈希函数计算哈希值
     token = hashlib.md5(combined_str.encode()).hexdigest()
     auth_hosts.append(token)
+    print(auth_hosts)
     return {"X-Token": token}
 
 
 @app.get("/alerts")
 async def read_alerts(x_token: Annotated[str | None, Header()] = None):
+    print(x_token)
     if x_token in auth_hosts:
         return {"Alerts": ["一大堆告警正在袭来!"]}
     #return {"Errors": ["认证失败！"]}

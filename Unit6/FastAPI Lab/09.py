@@ -6,17 +6,17 @@ from fastapi import FastAPI, Query, Path
 app = FastAPI()
 
 
-@app.get("/serial/{number}")
-async def read_items(
+@app.get("/device/{serial}")
+async def find_device(
         *,
         device_name: str = "Undefined",
-        ip_address: Annotated[str | None, Query(regex='\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b')] = None,
+        ip_address: Annotated[str | None, Query(regex=r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b')] = None,
         limit: Annotated[int, Query(gt=0, lt=300)] = 100,
-        number: Annotated[str | None, Path(min_length=7, max_length=13)]
+        serial: Annotated[str | None, Path(min_length=7, max_length=13)]
 ):
     results = {"account": limit, "devices": []}
     results.update({"DeviceName": device_name,
-                    "Serial": number})
+                    "Serial": serial})
     if ip_address:
         results.update(({"ManageIP": ip_address}))
     return results

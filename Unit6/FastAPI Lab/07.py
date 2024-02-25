@@ -5,33 +5,41 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 
-class TargetInfo(BaseModel):
+# Request Body Model
+class MemberTemplateDeploymentInfo(BaseModel):
+    targetInfo: list
+    hostName: str
+    id: str
     type: str
+    versionedTemplateId: str
+    resourceParams: object
+    params: object
 
 
-class DeployInfo(BaseModel):
+class TemplateDeploymentInfo(BaseModel):
     mainTemplateId: str | None = None
     templateId: str | None = None
     forcePushTemplate: bool
     isComposite: bool
-    targetInfo: list[TargetInfo] | None = None
+    memberTemplateDeploymentInfo: list[MemberTemplateDeploymentInfo] | None = None
 
 
-class TaskInfo(BaseModel):
+# Response Body Model
+class Response(BaseModel):
     taskId: int
     url: str | None = None
 
 
-class ResponseMain(BaseModel):
-    response: TaskInfo
+class TaskIdResult(BaseModel):
+    response: Response
     version: str | None = None
 
 
 app = FastAPI()
 
 
-@app.post("/dna/intent/api/v2/template-programmer/template/deploy", response_model=ResponseMain)
-async def deploy_temp(deploy_data: DeployInfo):
+@app.post("/dna/intent/api/v2/template-programmer/template/deploy", response_model=TaskIdResult)
+async def deploy_temp(deploy_data: TemplateDeploymentInfo):
     print(deploy_data)
     result = {"response":
                 {"taskId": 123,
