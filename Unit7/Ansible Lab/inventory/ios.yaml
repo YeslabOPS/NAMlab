@@ -1,0 +1,17 @@
+all:
+  children:
+    local:
+      hosts:
+        127.0.0.1
+      vars:
+        ansible_connection: local
+        ansible_user: root
+        ansible_pass: root123
+    cisco:
+      hosts:
+        192.168.1.101
+      vars:
+        ansible_user: ciscouser
+        ansible_pass: cisco@123
+        ansible_connection: ansible.netcommon.network_cli
+        ansible_network_os: cisco.ios.ios

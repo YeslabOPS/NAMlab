@@ -1,0 +1,18 @@
+---
+- name: Banner config & cancel
+  hosts: iosxe
+    
+  tasks: 
+    - name: configure the login banner
+      cisco.ios.ios_banner:
+        banner: login
+        text: |
+          this is my login banner
+          that contains a multiline
+          string
+        state: present
+
+    - name: remove the motd banner
+      cisco.ios.ios_banner:
+        banner: motd
+        state: absent

@@ -1,0 +1,24 @@
+---
+- name: Configure interfaceconfig
+  hosts: iosxe
+
+  vars: 
+    loopback_ip: 100.100.100.100
+
+  tasks:
+    - name: configure loopback interface
+      cisco.ios.ios_config:
+        lines:
+           - ip address {{ loopback_ip }} 255.255.255.255
+        parents: interface Loopback100
+        
+    - name: configure ip helpers on multiple interfaces
+      cisco.ios.ios_config:
+        lines:
+        - ip helper-address 172.26.1.10
+        - ip helper-address 172.26.3.8
+        parents: '{{ item }}'
+      with_items:
+      - interface GigabitEthernet2
+      - interface GigabitEthernet3
+      - interface Loopback100

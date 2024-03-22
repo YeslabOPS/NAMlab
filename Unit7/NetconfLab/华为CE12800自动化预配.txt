@@ -1,0 +1,44 @@
+[基础部分]
+system-view immediately
+interface GE 1/0/0
+undo shutdown
+quit
+interface Vlanif 1
+ip address 192.168.1.99 24
+quit
+
+[SSH部分]
+aaa
+undo local-user policy security-enhance
+undo local-user policy password change 
+local-user huaweiuser password cipher Huawei123@
+local-user huaweiuser level 3
+local-user huaweiuser service-type ssh
+quit
+ssh user huaweiuser authentication-type password
+ssh user huaweiuser service-type all
+user-interface vty 0 4
+authentication-mode aaa
+protocol inbound ssh
+quit
+stelnet server enable
+
+#首次登录将密码从Huawei123@手动改为Huawei@123
+
+[SFTP部分]
+sftp server enable
+ssh user huaweiuser sftp-directory cfcard:
+
+[NETCONF部分]
+aaa
+local-user netconf password cipher Huawei123@
+local-user netconf level 3
+local-user netconf service-type ssh
+quit
+ssh user netconf authentication-type password
+ssh user netconf service-type snetconf
+snetconf server enable
+netconf
+protocol inbound ssh port 830
+quit
+

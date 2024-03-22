@@ -1,0 +1,25 @@
+---
+- name: add vrf definition to router
+  hosts: cisco_ios_xe
+  connection: local
+  vars_files: 
+    - login_info.yaml
+
+  tasks:
+    - name: add vrf definition 
+      iosxe_vrf:
+        config: |
+                rd 1:3
+                route-target export 1:3
+                route-target import 1:3
+                !
+                address-family ipv4
+                exit-address-family
+                !
+                address-family ipv6
+                exit-address-family
+        state: "present"
+        host: "{{ inventory_hostname }}"
+        vrf: "yeslabvrf"
+        username: "{{ username }}"
+        password: "{{ password }}"

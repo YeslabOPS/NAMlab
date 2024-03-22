@@ -1,0 +1,18 @@
+--- 
+- name: get network
+  hosts: meraki
+  connection: local
+  vars: 
+    - auth_key: 6bec40cf957de430a6f1f2baa056b99a4fac9ea0
+    
+  vars_files: 
+     - ../var_files/org_id.yaml
+    
+  tasks:
+    - name: List all networks associated to the YourOrg organization
+      meraki_network:
+        auth_key: "{{ auth_key }}"
+        state: query
+        org_id: "{{ item }}"
+        output_level: debug
+      with_items: "{{ org_id_list }}"

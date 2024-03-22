@@ -1,0 +1,19 @@
+--- 
+- name: Query meraki org info and copy it
+  hosts: cisco_meraki
+  connection: local
+  vars:
+    - auth_key: 6bec40cf957de430a6f1f2baa056b99a4fac9ea0
+    
+  tasks:
+    - name: Query all orgs
+      meraki_organization:
+        auth_key: "{{ auth_key }}"
+        state: query
+      register: all_orgs_info
+      
+    - name: Copy orgs info to organization_info.txt
+      copy: 
+        dest: "/home/work/meraki/organization_info.txt"
+        content: >
+            "{{ all_orgs_info.data }}"

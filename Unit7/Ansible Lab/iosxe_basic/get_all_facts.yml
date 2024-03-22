@@ -1,0 +1,15 @@
+--- 
+- name: Show interfaces 
+  hosts: iosxe 
+
+  tasks: 
+    - name: Gather all legacy facts
+      cisco.ios.ios_facts:
+        gather_subset: all
+      register: facts
+     
+    - name: Copy facts
+      copy: 
+        dest: "/home/work/ansible_lab/data/cisco_iosxe_facts.txt"
+        content: >
+            "{{ facts.ansible_facts }}"

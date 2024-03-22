@@ -1,0 +1,15 @@
+---
+- name: Configure ACL
+  hosts: iosxe
+
+  vars_files:
+     - acl_config.yaml
+    
+  tasks:
+    - name: configure acl
+      cisco.ios.ios_config:
+        lines:
+          - deny {{ item.ip }}
+        parents:
+          - ip access-list standard {{ item.num }}
+      with_items: "{{ acl_list }}"

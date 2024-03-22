@@ -1,0 +1,11 @@
+--- 
+- name: Show interfaces 
+  hosts: iosxe 
+
+  tasks: 
+    - name: Create vlan
+      cisco.ios.ios_vlan:
+        vlan_id: 100
+        name: test-vlan
+        state: present
+    

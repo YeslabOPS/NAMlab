@@ -1,0 +1,17 @@
+---
+- name: execute show command in router
+  hosts: cisco_ios_xe
+  connection: local
+  vars_files: 
+    - login_info.yaml
+  tasks: 
+    - name: execute show nameservers in router
+      iosxe_show_command:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        command: "show ip name-servers"
+        host: "{{ inventory_hostname }}"
+      register: result_dict
+    - name: format output
+      debug: 
+        msg: "{{ result_dict.items() }}"

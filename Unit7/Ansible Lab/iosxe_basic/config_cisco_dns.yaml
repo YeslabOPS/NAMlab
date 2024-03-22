@@ -1,0 +1,17 @@
+---
+- name: configure cisco hostname and DNS
+  hosts: iosxe
+  
+  vars:
+    hostname: "North_IOSXE" 
+    dns: "192.168.1.1 8.8.8.8"
+
+  tasks: 
+    - name: configure hostname
+      cisco.ios.ios_config:
+        lines: 
+          - hostname {{ hostname }}
+    - name: configure DNS
+      cisco.ios.ios_config:
+        lines: 
+          - ip name-server {{ dns }}

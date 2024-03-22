@@ -1,0 +1,11 @@
+---
+- name: Configure interfaceconfig
+  hosts: cisco_ios
+
+  tasks:
+    - name: configurable backup path
+      cisco.ios.ios_config:
+        backup: yes
+        backup_options:
+          filename: backup.cfg
+          dir_path: /home/ansiblework/ios

@@ -1,0 +1,13 @@
+---
+- name: HTTP Test
+  hosts: 127.0.0.1
+  vars:
+      alert_api_url: "http://192.168.1.7:5000/api/alert"
+  tasks:
+      - name: Send alert
+        uri:
+          url: "{{ alert_api_url }}"
+          method: POST
+          body_format: json
+          body: "{{ {'message': 'Hi'} | to_json }}"
+          status_code: 200

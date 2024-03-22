@@ -1,0 +1,15 @@
+---
+- name: Query meraki orgs
+  hosts: meraki
+  connection: local
+
+  tasks:
+    - name: Query information about all organizations associated to the user
+      meraki_organization:
+        auth_key: 05599027d3ef1887c3593500a20b40aada21dde2
+        state: query
+      register: org_info
+
+    - name: print org_info
+      debug:
+        msg: "{{ org_info }}"
