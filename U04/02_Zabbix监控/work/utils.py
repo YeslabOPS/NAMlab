@@ -2,10 +2,11 @@ import influxdb_client
 from influxdb_client.client.write_api import SYNCHRONOUS
 
 # 这里替换为你的InfluxDB信息
-token = "YhQTsQScbFSEJvOeiChL-ukzoP2Ds0WBCm-A2sNQrLdg3cBbVcRfjtljs4_VH5NI8IKc7K83t8jlgvyAf4Z4FA=="
-org = "C_A"
-bucket = "monitor"
-influx_server = "http://8.138.90.155:8086"
+token = "A4Urh_wTR87jhMeYmXmfsfpU4VlmW4HV6c_lPQfEoHMnLOmSR3n6BKFzSF0UjZptkJCCxpYoez_lYmrz5_YwBg=="
+org = "yeslab"
+bucket = "U4"
+influx_server = "http://127.0.0.1:8086"
+
 
 class DataWriter:
     def __init__(self):

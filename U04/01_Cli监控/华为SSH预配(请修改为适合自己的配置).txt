@@ -1,0 +1,20 @@
+system-view immediately
+interface Me 0/0/0
+ip address 192.168.1.99 24
+undo shutdown
+quit
+aaa
+undo local-user policy security-enhance
+undo local-user policy password change 
+local-user huaweiuser password cipher Huawei123@
+local-user huaweiuser level 3
+local-user huaweiuser service-type ssh
+quit
+ssh user huaweiuser authentication-type password
+ssh user huaweiuser service-type all
+user-interface vty 0 4
+authentication-mode aaa
+protocol inbound all
+quit
+stelnet server enable
+quit
