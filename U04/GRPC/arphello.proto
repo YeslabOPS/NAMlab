@@ -6,8 +6,7 @@ service get_arp {
 }
 
 message arpRequest {
-  string username = 1;
-  string password = 2;
+  string query_content = 1;
 }
 
 message arpReply {
