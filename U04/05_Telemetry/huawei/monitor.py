@@ -15,7 +15,7 @@ def serve():
   huawei_grpc_dialout_pb2_grpc.add_gRPCDataserviceServicer_to_server(
       Telemetry_CPU_Info(), server)     
   #设置socket监听端口
-  server.add_insecure_port('192.168.1.6:20000')     
+  server.add_insecure_port('127.0.0.1:20001')     
   #启动grpc server
   server.start()
   #死循环监听
