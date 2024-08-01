@@ -15,7 +15,7 @@ def serve():
     protoxemdt_grpc_dialout_pb2_grpc.add_gRPCMdtDialoutServicer_to_server(
         Telemetry_CPU_Info(), server)
     # 设置socket监听端口
-    server.add_insecure_port('192.168.1.3:20000')
+    server.add_insecure_port('127.0.0.1:20000')
     # 启动grpc server
     server.start()
     # 死循环监听
@@ -33,10 +33,10 @@ class Telemetry_CPU_Info(protoxemdt_grpc_dialout_pb2_grpc.gRPCMdtDialoutServicer
     def MdtDialout(self, request_iterator, context):
         data = request_iterator.next().data
         telemetry_data = telemetry_pb2.Telemetry.FromString(data)
-        in_octets = telemetry_data.data_gpbkv[0].fields[-1].fields[1].uint64_value
-        out_octets = telemetry_data.data_gpbkv[0].fields[-1].fields[-1].uint64_value
-        print(in_octets)
-        print(out_octets)
+        cpu_5s = telemetry_data.data_gpbkv[0].fields[1].fields[0].uint32_value
+        cpu_1m = telemetry_data.data_gpbkv[0].fields[1].fields[1].uint32_value
+        cpu_5m = telemetry_data.data_gpbkv[0].fields[1].fields[2].uint32_value
+        print(f"CPU_5S:{cpu_5s}\nCPU_1M:{cpu_1m}\nCPU_5M:{cpu_5m}\n")
 
 if __name__ == '__main__':
     serve()

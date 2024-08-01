@@ -15,7 +15,7 @@ def serve():
   huawei_grpc_dialout_pb2_grpc.add_gRPCDataserviceServicer_to_server(
       Telemetry_CPU_Info(), server)     
   #设置socket监听端口
-  server.add_insecure_port('127.0.0.1:20001')     
+  server.add_insecure_port('0.0.0.0:20001')     
   #启动grpc server
   server.start()
   #死循环监听
@@ -32,29 +32,19 @@ class Telemetry_CPU_Info(huawei_grpc_dialout_pb2_grpc.gRPCDataserviceServicer):
     
     def dataPublish(self, request_iterator, context):
         for i in request_iterator:
-            print ('############ start ############\n')
-            telemetry_data = huawei_telemetry_pb2.Telemetry.FromString(i.data)
-            print (telemetry_data)            
+            telemetry_data = huawei_telemetry_pb2.Telemetry.FromString(i.data)       
             
             for row_data in  telemetry_data.data_gpb.row:
-                print ('-----------------')
-                print ('The proto path is :'+telemetry_data.proto_path)
-                print ('-----------------')
                 module_name = telemetry_data.proto_path.split('.')[0]
                 root_class  = telemetry_data.proto_path.split('.')[1]
                 
-				#动态加载telemetry获取数据的对应模块，本例中为
+				#动态加载telemetry获取数据的对应模块
                 decode_module = importlib.import_module( module_name+'_pb2')
-                print (decode_module)
                 
 				#定义解码方法：getattr获取动态加载的模块中的属性值，调用此属性的解码方法FromString
                 decode_func = getattr(decode_module,root_class).FromString
-                
-                print ('----------- content is -----------\n')
-				# 将row_data中的content中的内容使用此方法解码，并输出
-                print (decode_func(row_data.content))
-                print ('----------- done -----------------')
-
+                data = decode_func(row_data).cpuInfos.cpuInfo
+                print(f"cpu position:{data.position} usage value: {data.systemCpuUsage}")
 
 if __name__ == '__main__':
   serve()
