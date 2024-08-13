@@ -6,7 +6,7 @@ PASSWORD = 'Huawei123@'
 
 class HuaweiController(BaseController):
     def __init__(self):
-        super().__init__(HOST, USERNAME, PASSWORD)
+        super().__init__(HOST, USERNAME, PASSWORD, {'name': 'huaweiyang'})
         self.if_data = {}
 
     # 重写父类的方法
