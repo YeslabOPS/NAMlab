@@ -1,6 +1,6 @@
 system-view immediately
 interface Me 0/0/0
-ip address 192.168.1.99 24
+ip address 192.168.56.100 24
 undo shutdown
 quit
 aaa
@@ -12,9 +12,14 @@ local-user huaweiuser service-type ssh
 quit
 ssh user huaweiuser authentication-type password
 ssh user huaweiuser service-type all
+ssh user huaweiuser sftp-directory cfcard:
 user-interface vty 0 4
 authentication-mode aaa
 protocol inbound all
 quit
 stelnet server enable
+sftp server enable
+netconf
+protocol inbound ssh port 830
+quit
 quit
