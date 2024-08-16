@@ -1,9 +1,9 @@
 import requests
 requests.packages.urllib3.disable_warnings()
 
-login_info = {"host": "10.1.1.222",
-              "username": "restconf",
-              "password": "restconf123"}
+login_info = {"host": "你的设备IP",
+              "username": "你的restconf用户",
+              "password": "你的restconf密码"}
 
 def check_ospf_config():
     # OSPF配置查看函数
@@ -114,9 +114,9 @@ def loop_ospf(data):
         print(loop_ospf_result.reason)
 
 
-def loop_del():
+def loop_del(if_num):
     # 删除环回接口
-    loop_api = "/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback=100"
+    loop_api = f"/restconf/data/Cisco-IOS-XE-native:native/interface/Loopback={if_num}"
     loop_uri = "https://" + login_info["host"] + loop_api
     headers = {'Content-Type': 'application/yang-data+json', 'Accept': 'application/yang-data+json'}
 

@@ -1,5 +1,5 @@
-Device = {"host": "10.1.1.222",
+Device = {"host": "你的设备IP",
           "port": 830,
-          "username": "netconf",
-          "password": "netconf123",
+          "username": "你的netconf用户",
+          "password": "你的netconf密码",
           "hostkey_verify": False}
