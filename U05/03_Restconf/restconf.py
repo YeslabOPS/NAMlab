@@ -5,6 +5,7 @@ login_info = {"host": "你的设备IP",
               "username": "你的restconf用户",
               "password": "你的restconf密码"}
 
+
 def check_ospf_config():
     # OSPF配置查看函数
     ospf_api = "/restconf/data/Cisco-IOS-XE-native:native/router"
