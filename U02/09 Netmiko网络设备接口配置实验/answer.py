@@ -3,15 +3,17 @@ from netmiko import ConnectHandler
 ## Task1: 完成设备基本信息
 device_info = {
     "device_type": "huawei_vrpv8",
-    "ip" : '192.168.1.101', 
+    "ip" : '10.1.1.221',
     "port" : 22, 
     "username" : 'huaweiuser',
-    "password" : 'Huawei@123',
+    "password" : 'Huawei123@',
 }
+
 
 ## Task2: 定义一个能完成ConnectHandler的初始化链接的函数
 def conn(device_info):
     return ConnectHandler(**device_info)
+
 
 ## Task3: 定义一个可以为任意接口配置IP地址的函数
 def config_if_ip(ssh_hand, if_name, ip_address, ip_mask):
@@ -21,7 +23,7 @@ def config_if_ip(ssh_hand, if_name, ip_address, ip_mask):
                 'undo portswitch',
                 f'ip add {ip_address} {ip_mask}']
     for cmd in cmd_list:
-        ssh_hand.send_command(command_string=cmd,expect_string=r']')
+        ssh_hand.send_command(command_string=cmd, expect_string=r']')
 
 
 

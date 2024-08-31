@@ -1,7 +1,7 @@
 from netmiko import ConnectHandler
 
 class Network():
-    def __init__(self, ip, username, password, device_type=""):
+    def __init__(self, ip, username, password, device_type):
         device_info = {
             "device_type": device_type,
             "ip" : ip, 
@@ -30,6 +30,6 @@ class Network():
 
 
 ## Task4: 调整登录信息，实例化并运行代码
-net = Network('192.168.1.101', 'huaweiuser', 'Huawei@123')
+net = Network('10.1.1.221', 'huaweiuser', 'Huawei123@', "huawei_vrpv8")
 net.get_cpu()
 net.proc_cpu()
