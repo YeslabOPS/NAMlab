@@ -1,0 +1,10 @@
+---
+cisco:
+  connection_options:
+    netmiko:
+      platform: "cisco_xe"
+
+huawei:
+  connection_options:
+    netmiko:
+      platform: "huawei_vrpv8"

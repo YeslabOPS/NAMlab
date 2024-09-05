@@ -1,0 +1,17 @@
+enable
+config t
+hostname CISCO
+interface GigabitEthernet 1
+ip address 192.168.0.170 255.255.255.0
+no shut
+exit
+ip domain name yeslab.net
+aaa new-model
+username ciscouser password 0 Cisco@123
+username ciscouser privilege 15
+crypto key generate rsa
+1024
+line vty 0 4
+transport input ssh
+privilege level 15
+exit

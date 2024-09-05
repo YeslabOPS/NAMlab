@@ -1,0 +1,18 @@
+---
+cisco_switch:
+  hostname: "192.168.0.170"
+  port: 22
+  username: "ciscouser"
+  password: "Cisco@123"
+  platform: "cisco_xe"
+  groups:
+    - cisco
+
+huawei_switch:
+  hostname: "192.168.0.160"
+  port: 22
+  username: "huaweiuser"
+  password: "Huawei@123"
+  platform: "huawei_vrpv8"
+  groups:
+    - huawei
