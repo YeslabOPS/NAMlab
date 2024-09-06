@@ -35,7 +35,7 @@ class DNAC:
         return [info['managementIpAddress'] for info in response.json()['response']]
 
     # 获取路径追踪摘要
-    def get_path_trace_summary(self, dst_ip):
+    def get_path_trace_summary(self):
         url = f"{self.url}/dna/intent/api/v1/flow-analysis"
         response = requests.get(url, headers=self.headers, verify=False)
         return response.json()['response']
@@ -50,12 +50,12 @@ class DNAC:
     def del_old_flow_trace_task(self, ip_list):
         # 获取已有路径追踪进程id
         for ip in ip_list:
-            _path_trace_summary = self.get_path_trace_summary(ip)
+            _path_trace_summary = self.get_path_trace_summary()
             old_flow_ids = [_summary['id'] for _summary in _path_trace_summary]
             # 删除目标IP相关的已存在路径追踪进程
             for old_flow_id in old_flow_ids:
                 url = f"{self.url}/dna/intent/api/v1/flow-analysis/{old_flow_id}"
-                response = requests.delete(url, headers=self.headers, verify=False)
+                requests.delete(url, headers=self.headers, verify=False)
         return "消息: 历史路径追踪任务已删除"
 
     # 开启路径追踪

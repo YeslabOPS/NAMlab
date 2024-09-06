@@ -64,6 +64,7 @@ def analysis(src_ip, path_infos):
     for device_info in path_infos['networkElementsInfo']:
         device_name = device_info['name']
         logging.info(f'Start Checking {device_name}')
+        # 接口状态
         if 'ingressInterface' in device_info.keys():
             device_int_status = device_info['ingressInterface']['physicalInterface']['interfaceStatistics'][
                 'adminStatus']
@@ -72,6 +73,8 @@ def analysis(src_ip, path_infos):
                 'adminStatus']
         else:
             device_int_status = 'up'
+
+        # 设备内存
         device_total_mem = device_info['deviceStatistics']['memoryStatistics']['totalMemory']
         device_used_mem = device_info['deviceStatistics']['memoryStatistics']['memoryUsage']
         device_free_mem = device_total_mem - device_used_mem
@@ -83,7 +86,7 @@ def analysis(src_ip, path_infos):
             issue = f"{device_name}设备的接口出现问题，请尽快处理！"
             if issue not in issues:
                 issues.append(issue)
-        if device_free_mem < 2000000000:
+        if device_free_mem < 1000000000:
             issue = f"{device_name}设备剩余内存较低，请尽快处理！"
             if issue not in issues:
                 issues.append(issue)
@@ -91,4 +94,4 @@ def analysis(src_ip, path_infos):
 
 # 请分别测试下面的用例
 #trace_all()
-#a2b_monitor('10.10.20.177','10.10.20.178')
+a2b_monitor('10.10.20.177','10.10.20.178')
