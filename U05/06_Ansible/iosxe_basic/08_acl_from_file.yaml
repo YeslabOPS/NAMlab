@@ -1,9 +1,10 @@
 ---
 - name: Configure ACL
-  hosts: iosxe
+  hosts: cisco
+  gather_facts: no
 
   vars_files:
-     - acl_config.yaml
+     - Config_MyACL.yaml
     
   tasks:
     - name: configure acl

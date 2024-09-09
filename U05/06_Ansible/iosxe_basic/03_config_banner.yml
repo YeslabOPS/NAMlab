@@ -1,6 +1,7 @@
 --- 
 - name: Config banner
-  hosts: cisco_ios
+  hosts: cisco
+  gather_facts: no
 
   tasks: 
     - name: Configure the login banner

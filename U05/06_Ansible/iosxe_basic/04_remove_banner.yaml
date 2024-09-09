@@ -1,0 +1,17 @@
+---
+- name: Banner config check & cancel
+  hosts: cisco
+  gather_facts: no
+
+  tasks:
+    - name: Check if the motd banner is configured
+      cisco.ios.ios_command:
+        commands:
+          - "show running-config | include banner motd"
+      register: banner_check
+
+    - name: Remove the motd banner if configured
+      cisco.ios.ios_banner:
+        banner: motd
+        state: absent
+      when: banner_check.stdout[0] != ""

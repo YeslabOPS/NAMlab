@@ -1,6 +1,6 @@
 --- 
-- name: Show interfaces 
-  hosts: iosxe 
+- name: Get Many Facts
+  hosts: cisco
 
   tasks: 
     - name: Gather only the config and default facts
@@ -8,10 +8,16 @@
         gather_subset:
         - config
       register: config_facts
+
+    - name: Ensure data directory exists
+      file:
+        path: ./data
+        state: directory
+        mode: '0755'
       
     - name: Copy config_facts
       copy: 
-        dest: "/home/work/ansible_lab/data/cisco_config_facts.txt"
+        dest: "./data/cisco_config_facts.txt"
         content: >
             "{{ config_facts }}"
       
@@ -23,7 +29,7 @@
       
     - name: Copy min_facts
       copy: 
-        dest: "/home/work/ansible_lab/data/cisco_min_facts.txt"
+        dest: "./data/cisco_min_facts.txt"
         content: >
             "{{ min_facts }}"
             
@@ -35,7 +41,7 @@
       
     - name: Copy hardware_facts
       copy: 
-        dest: "/home/work/ansible_lab/data/cisco_hardware_facts.txt"
+        dest: "./data/cisco_hardware_facts.txt"
         content: >
             "{{ hardware_facts }}"
             
@@ -47,8 +53,6 @@
       
     - name: Copy interfaces_facts
       copy: 
-        dest: "/home/work/ansible_lab/data/cisco_interfaces_facts.txt"
+        dest: "./data/cisco_interfaces_facts.txt"
         content: >
             "{{ interfaces_facts }}"
-     
-    

@@ -1,0 +1,11 @@
+---
+- name: Configration Backup
+  hosts: cisco
+
+  tasks:
+    - name: backup my configration
+      cisco.ios.ios_config:
+        backup: yes
+        backup_options:
+          filename: backup.cfg
+          dir_path: ./data/

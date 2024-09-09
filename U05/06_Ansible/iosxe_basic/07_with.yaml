@@ -1,6 +1,6 @@
 ---
-- name: Configure interfaceconfig
-  hosts: iosxe
+- name: Configure Interface Helper IP
+  hosts: cisco
 
   vars: 
     loopback_ip: 100.100.100.100
