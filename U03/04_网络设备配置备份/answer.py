@@ -1,6 +1,5 @@
 import os
 import time
-import json
 import datetime
 import pandas as pd
 import netmiko

@@ -3,14 +3,14 @@
   hosts: cisco
 
   vars: 
-    loopback_ip: 100.100.100.100
+    loopback_ip: 110.100.100.100
 
   tasks:
     - name: configure loopback interface
       cisco.ios.ios_config:
         lines:
            - ip address {{ loopback_ip }} 255.255.255.255
-        parents: interface Loopback100
+        parents: interface Loopback101
         
     - name: configure ip helpers on multiple interfaces
       cisco.ios.ios_config:
@@ -21,4 +21,4 @@
       with_items:
       - interface GigabitEthernet2
       - interface GigabitEthernet3
-      - interface Loopback100
+      - interface Loopback101

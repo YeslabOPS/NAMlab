@@ -12,7 +12,6 @@ all:
         192.168.0.170
       vars:
         ansible_user: ciscouser
-        ansible_pass: Cisco@123
+        ansible_password: Cisco@123
         ansible_connection: network_cli
         ansible_network_os: cisco.ios.ios
-        ansible_ssh_pass: foo

@@ -4,14 +4,14 @@
   gather_facts: no
 
   tasks:
-    - name: Check if the motd banner is configured
+    - name: Check if the login banner is configured
       cisco.ios.ios_command:
         commands:
-          - "show running-config | include banner motd"
+          - "show running-config | include banner login"
       register: banner_check
 
-    - name: Remove the motd banner if configured
+    - name: Remove the login banner if configured
       cisco.ios.ios_banner:
-        banner: motd
+        banner: login
         state: absent
       when: banner_check.stdout[0] != ""
