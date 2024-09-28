@@ -57,6 +57,7 @@ class HUAWEI_CPU(Net):
     def __init__(self, inventory_dict):
         super().__init__(inventory_dict)
         self.cpu_metric = ['Current', 'FiveSec', 'OneMin', 'FiveMin']
+        self.diff_value_cache = {'cpu0':[0.,0.,0.,0.], 'cpu1':[0.,0.,0.,0.]}
 
     # CPU监控
     def get_cpu(self):
@@ -69,11 +70,16 @@ class HUAWEI_CPU(Net):
                          cpu_str.split('-\n')[5].split('\n') \
                          if info != ''}
         for proc_name in process_dict:
-            db.write_ts_data('HUAWEI_CPU_PROC', [proc_name, float(process_dict[proc_name])])
+            now_v = float(process_dict[proc_name])
+            db.write_ts_data('HUAWEI_CPU_PROC', [proc_name, now_v/100.])
         for cpu_name in cpu_dict:
             for i in range(len(cpu_dict[cpu_name])):
-                db.write_ts_data('HUAWEI_CPU_USAGE',
-                                 [cpu_name+'_'+self.cpu_metric[i], float(cpu_dict[cpu_name][i])]) #[Current 10]
+                cpu_now_v = float(cpu_dict[cpu_name][i])
+                db.write_ts_data('HUAWEI_CPU_USAGE', [cpu_name+'_'+self.cpu_metric[i], cpu_now_v]) #[Current 10]
+                diff_now_v = cpu_now_v - self.diff_value_cache[cpu_name][i]
+                self.diff_value_cache[cpu_name][i] = diff_now_v
+                db.write_ts_data('HUAWEI_CPU_DIFF', [cpu_name+'_'+self.cpu_metric[i], diff_now_v])
+
 
 if __name__ == "__main__":
     cisco_monitor = CISCO_CPU(CISCO)

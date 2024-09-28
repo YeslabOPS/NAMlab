@@ -1,6 +1,6 @@
 system-view immediately
 interface Me 0/0/0
-ip address 192.168.56.100 24
+ip address 192.168.0.220 24
 undo shutdown
 quit
 aaa
@@ -18,8 +18,6 @@ authentication-mode aaa
 protocol inbound all
 quit
 stelnet server enable
-sftp server enable
-netconf
-protocol inbound ssh port 830
 quit
-quit
+save
+y
