@@ -1,8 +1,8 @@
 syntax = "proto3";
 package get_arp;
 
-service get_arp {
-  rpc Login_info (arpRequest) returns (arpReply) {}
+service Get_arp {
+  rpc Get_it (arpRequest) returns (arpReply) {}
 }
 
 message arpRequest {

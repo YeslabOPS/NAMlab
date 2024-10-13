@@ -37,11 +37,11 @@ class Telemetry_CPU_Info(huawei_grpc_dialout_pb2_grpc.gRPCDataserviceServicer):
             for row_data in  telemetry_data.data_gpb.row:
                 module_name = telemetry_data.proto_path.split('.')[0]
                 root_class  = telemetry_data.proto_path.split('.')[1]
-                
-				#动态加载telemetry获取数据的对应模块
+
+                #动态加载telemetry获取数据的对应模块
                 decode_module = importlib.import_module( module_name+'_pb2')
-                
-				#定义解码方法：getattr获取动态加载的模块中的属性值，调用此属性的解码方法FromString
+
+                #定义解码方法：getattr获取动态加载的模块中的属性值，调用此属性的解码方法FromString
                 decode_func = getattr(decode_module,root_class).FromString
                 data = decode_func(row_data).cpuInfos.cpuInfo
                 print(f"cpu position:{data.position} usage value: {data.systemCpuUsage}")

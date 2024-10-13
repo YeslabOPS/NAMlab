@@ -1,6 +1,5 @@
 from concurrent import futures
 import time
-import importlib
 import grpc
 import protoxemdt_grpc_dialout_pb2_grpc
 import telemetry_pb2
@@ -15,7 +14,7 @@ def serve():
     protoxemdt_grpc_dialout_pb2_grpc.add_gRPCMdtDialoutServicer_to_server(
         Telemetry_CPU_Info(), server)
     # 设置socket监听端口
-    server.add_insecure_port('127.0.0.1:20000')
+    server.add_insecure_port('0.0.0.0:20000')
     # 启动grpc server
     server.start()
     # 死循环监听
