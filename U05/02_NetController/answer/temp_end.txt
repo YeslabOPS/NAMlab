@@ -1,0 +1,8 @@
+    </div>
+
+    <script>
+        // 设置报告生成时间
+        document.getElementById('reportTime').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>

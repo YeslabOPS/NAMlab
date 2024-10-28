@@ -8,7 +8,7 @@ class do_it(arphello_pb2_grpc.Get_arpServicer):
     def __init__(self):
         self.known_ip = "127.0.0.1"
         
-    def Get_it(self, request, context):
+    def Get_it2(self, request, context):
         print(request.query_content)
         #如果查询的是127.0.0.1的ARP信息，就可以做，否则就返回
         if request.query_content == self.known_ip:
@@ -31,7 +31,7 @@ def serve():
     #创建gRPC服务
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     #从定义的服务中部署gRPC servicer
-    arphello_pb2_grpc.add_Get_arpServicer_to_server(do_it(),server)
+    arphello_pb2_grpc.add_Get_arp2Servicer_to_server(do_it(),server)
     #启动服务器
     server.add_insecure_port('0.0.0.0:10050')
     server.start()

@@ -5,8 +5,7 @@ import xml.dom.minidom
 netconf_conf_filter = '''
 <filter xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
     <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
-        <username>
-        </username>
+        <username></username>
     </native>
 </filter>
 '''

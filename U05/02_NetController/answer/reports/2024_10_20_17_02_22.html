@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网络设备接口状态报告</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .report-time {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        .topology {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .topology img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .up {
+            color: green;
+            font-weight: bold;
+        }
+        .down {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>网络设备接口状态报告</h1>
+
+        <div class="report-time">
+            报告生成时间: <span id="reportTime"></span>
+        </div>
+
+        <div class="topology">
+            <h2>当前网络拓扑图</h2>
+            <!-- 这里放置拓扑图 -->
+            <img src="../topo.png" alt="网络拓扑图">
+        </div>
+<h2>思科交换机接口状态</h2><table><tr><th>接口</th><th>状态</th></tr><tr><td>GigabitEthernet1</td><td class="up">UP</td></tr><tr><td>GigabitEthernet2</td><td class="up">UP</td></tr><tr><td>GigabitEthernet3</td><td class="down">DOWN</td></tr><tr><td>GigabitEthernet4</td><td class="up">UP</td></tr></table>
+<h2>华为交换机接口状态</h2><table><tr><th>接口</th><th>状态</th></tr><tr><td>GE1/0/0</td><td class="up">UP</td></tr><tr><td>GE1/0/1</td><td class="up">UP</td></tr><tr><td>GE1/0/2</td><td class="up">UP</td></tr><tr><td>GE1/0/3</td><td class="up">UP</td></tr><tr><td>GE1/0/4</td><td class="up">UP</td></tr><tr><td>GE1/0/5</td><td class="down">DOWN</td></tr><tr><td>GE1/0/6</td><td class="up">UP</td></tr><tr><td>GE1/0/7</td><td class="up">UP</td></tr><tr><td>GE1/0/8</td><td class="up">UP</td></tr><tr><td>GE1/0/9</td><td class="up">UP</td></tr></table>
+    </div>
+
+    <script>
+        // 设置报告生成时间
+        document.getElementById('reportTime').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>
