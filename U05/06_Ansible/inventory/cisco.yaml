@@ -9,7 +9,7 @@ all:
         ansible_pass: root123
     cisco:
       hosts:
-        192.168.0.170
+        192.168.0.103
       vars:
         ansible_user: ciscouser
         ansible_password: Cisco@123
