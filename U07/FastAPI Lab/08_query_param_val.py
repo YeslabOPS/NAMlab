@@ -11,6 +11,7 @@ async def read_items(serial: Annotated[str | None, Query(min_length=7, max_lengt
     results = {"devices": [{"device_name": "Core_Switch"}, {"ip_address": "1.1.1.1"}]}
     if serial:
         results.update({"serial": serial})
+    print(results)
     return results
 
 if __name__ == "__main__":

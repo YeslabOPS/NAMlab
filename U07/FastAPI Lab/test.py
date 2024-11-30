@@ -1,17 +1,18 @@
 import requests
 
-auth_url = "http://127.0.0.1:5000/auth"
+url = f'http://127.0.0.1:5000//dna/intent/api/v2/template-programmer/template/deploy'
 
-payload = {'username': 'cisco',
-           'password': 'cisco123'}
+data = {'mainTemplateId': '001',
+        'forcePushTemplate': True,
+        'isComposite': 'yes',
+        'memberTemplateDeploymentInfo': [{'targetInfo': ['1.1.1.1', '2.2.2.2'],
+                                          'hostName': 'YESLAB',
+                                          'id': '123',
+                                          'type': 'Switch',
+                                          'versionedTemplateId': '1',
+                                          'resourceParams': {'a':1},
+                                          'params': {'b':1}
+                                          }]}
 
-response = requests.post(auth_url, params=payload)
-token = response.json()['X-Token']
-
-alert_url = "http://127.0.0.1:5000/alerts"
-
-param = {'x-token': token}
-
-response = requests.get(alert_url, headers=param)
-
+response = requests.post(url, json=data)
 print(response.json())
