@@ -1,8 +1,8 @@
 enable
 config t
-hostname CiscoSwtich
-interface GigabitEthernet1
-ip address 192.168.0.221 255.255.255.0
+hostname DCA_2
+interface fa 0
+ip address 10.1.1.227 255.255.255.0
 no shut
 exit
 ip domain name yeslab.net

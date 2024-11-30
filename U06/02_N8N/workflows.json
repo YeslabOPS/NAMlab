@@ -1,0 +1,714 @@
+{
+    "data": [
+        {
+            "createdAt": "2024-11-23T08:17:47.934Z",
+            "updatedAt": "2024-11-23T08:17:47.934Z",
+            "id": "bZid6bYqqiuvBBYc",
+            "name": "new workflow",
+            "active": false,
+            "nodes": [
+                {
+                    "id": "0f5532f9-36ba-4bef-86c7-30d607400b15",
+                    "name": "Jira",
+                    "webhookId": "string",
+                    "disabled": true,
+                    "notesInFlow": true,
+                    "notes": "string",
+                    "type": "n8n-nodes-base.Jira",
+                    "typeVersion": 1,
+                    "executeOnce": false,
+                    "alwaysOutputData": false,
+                    "retryOnFail": false,
+                    "maxTries": 0,
+                    "waitBetweenTries": 0,
+                    "continueOnFail": false,
+                    "onError": "stopWorkflow",
+                    "position": [
+                        -100,
+                        80
+                    ],
+                    "parameters": {
+                        "additionalProperties": {}
+                    },
+                    "credentials": {
+                        "jiraSoftwareCloudApi": {
+                            "id": "35",
+                            "name": "jiraApi"
+                        }
+                    }
+                }
+            ],
+            "connections": {
+                "main": [
+                    {
+                        "node": "Jira",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            },
+            "settings": {
+                "saveExecutionProgress": true,
+                "saveManualExecutions": true,
+                "saveDataErrorExecution": "all",
+                "saveDataSuccessExecution": "all",
+                "executionTimeout": 3600,
+                "errorWorkflow": "VzqKEW0ShTXA5vPj",
+                "timezone": "America/New_York",
+                "executionOrder": "v1"
+            },
+            "staticData": {
+                "lastId": 1
+            },
+            "meta": null,
+            "pinData": null,
+            "versionId": "34de6220-7cf9-4290-97ae-7ba1ae4bb0d3",
+            "triggerCount": 0,
+            "tags": []
+        },
+        {
+            "createdAt": "2024-11-23T08:23:32.642Z",
+            "updatedAt": "2024-11-23T08:23:32.642Z",
+            "id": "hlJMsi2258Pc9pI6",
+            "name": "new workflow",
+            "active": false,
+            "nodes": [
+                {
+                    "parameters": {},
+                    "id": "1401071e-bc91-4b71-88dc-c3188e0f921f",
+                    "name": "When clicking \u2018Test workflow\u2019",
+                    "type": "n8n-nodes-base.manualTrigger",
+                    "typeVersion": 1,
+                    "position": [
+                        340,
+                        320
+                    ]
+                },
+                {
+                    "parameters": {
+                        "operation": "xlsx",
+                        "binaryPropertyName": "=data",
+                        "options": {
+                            "fileName": ""
+                        }
+                    },
+                    "id": "f1e5f457-cc03-490e-9808-4f34e1e6fe58",
+                    "name": "Convert to File",
+                    "type": "n8n-nodes-base.convertToFile",
+                    "typeVersion": 1.1,
+                    "position": [
+                        1000,
+                        320
+                    ]
+                },
+                {
+                    "parameters": {
+                        "curlImport": "",
+                        "httpVariantWarning": "",
+                        "method": "GET",
+                        "url": "https://api.meraki.com/api/v1/organizations",
+                        "": "",
+                        "authentication": "predefinedCredentialType",
+                        "nodeCredentialType": "ciscoMerakiApi",
+                        "provideSslCertificates": false,
+                        "sendQuery": false,
+                        "sendHeaders": false,
+                        "sendBody": false,
+                        "options": {},
+                        "infoMessage": ""
+                    },
+                    "id": "5a59004e-74bb-4aee-bae3-044cd89ea459",
+                    "name": "Cisco Meraki Get ORG",
+                    "type": "n8n-nodes-base.httpRequest",
+                    "typeVersion": 4.2,
+                    "position": [
+                        560,
+                        320
+                    ]
+                }
+            ],
+            "connections": {
+                "When clicking \u2018Test workflow\u2019": {
+                    "main": [
+                        [
+                            {
+                                "node": "Cisco Meraki Get ORG",
+                                "type": "main",
+                                "index": 0
+                            }
+                        ]
+                    ]
+                },
+                "Cisco Meraki Get ORG": {
+                    "main": [
+                        [
+                            {
+                                "node": "Cisco Meraki Org Device",
+                                "type": "main",
+                                "index": 0
+                            }
+                        ]
+                    ]
+                },
+                "Cisco Meraki Org Device": {
+                    "main": [
+                        [
+                            {
+                                "node": "Convert to File",
+                                "type": "main",
+                                "index": 0
+                            }
+                        ]
+                    ]
+                },
+                "Convert to File": {
+                    "main": [
+                        []
+                    ]
+                }
+            },
+            "settings": {
+                "executionOrder": "v1"
+            },
+            "staticData": null,
+            "meta": null,
+            "pinData": null,
+            "versionId": "d54cdb88-718d-4c08-a20d-414e66ae24af",
+            "triggerCount": 0,
+            "tags": []
+        },
+        {
+            "createdAt": "2024-11-23T08:20:24.837Z",
+            "updatedAt": "2024-11-23T08:20:24.837Z",
+            "id": "nvAufXojsAClBb39",
+            "name": "new workflow",
+            "active": false,
+            "nodes": [
+                {
+                    "parameters": {},
+                    "id": "1401071e-bc91-4b71-88dc-c3188e0f921f",
+                    "name": "When clicking Test workflow",
+                    "type": "n8n-nodes-base.manualTrigger",
+                    "typeVersion": 1,
+                    "position": [
+                        340,
+                        320
+                    ]
+                },
+                {
+                    "parameters": {
+                        "operation": "xlsx",
+                        "binaryPropertyName": "=data",
+                        "options": {
+                            "fileName": ""
+                        }
+                    },
+                    "id": "f1e5f457-cc03-490e-9808-4f34e1e6fe58",
+                    "name": "Convert to File",
+                    "type": "n8n-nodes-base.convertToFile",
+                    "typeVersion": 1.1,
+                    "position": [
+                        1000,
+                        320
+                    ]
+                }
+            ],
+            "connections": {
+                "main": [
+                    {
+                        "node": "Jira",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            },
+            "settings": {
+                "saveExecutionProgress": true,
+                "saveManualExecutions": true,
+                "saveDataErrorExecution": "all",
+                "saveDataSuccessExecution": "all",
+                "executionTimeout": 3600,
+                "errorWorkflow": "VzqKEW0ShTXA5vPj",
+                "timezone": "America/New_York",
+                "executionOrder": "v1"
+            },
+            "staticData": {
+                "lastId": 1
+            },
+            "meta": null,
+            "pinData": null,
+            "versionId": "b320fa25-6c40-43ac-8104-6a395b4f306c",
+            "triggerCount": 0,
+            "tags": []
+        },
+        {
+            "createdAt": "2024-11-23T08:21:30.110Z",
+            "updatedAt": "2024-11-23T08:21:30.110Z",
+            "id": "rMPTLK3Ni2pcbC8z",
+            "name": "new workflow",
+            "active": false,
+            "nodes": [
+                {
+                    "parameters": {},
+                    "id": "1401071e-bc91-4b71-88dc-c3188e0f921f",
+                    "name": "When clicking \u2018Test workflow\u2019",
+                    "type": "n8n-nodes-base.manualTrigger",
+                    "typeVersion": 1,
+                    "position": [
+                        340,
+                        320
+                    ]
+                },
+                {
+                    "parameters": {
+                        "operation": "xlsx",
+                        "binaryPropertyName": "=data",
+                        "options": {
+                            "fileName": ""
+                        }
+                    },
+                    "id": "f1e5f457-cc03-490e-9808-4f34e1e6fe58",
+                    "name": "Convert to File",
+                    "type": "n8n-nodes-base.convertToFile",
+                    "typeVersion": 1.1,
+                    "position": [
+                        1000,
+                        320
+                    ]
+                }
+            ],
+            "connections": {
+                "When clicking \u2018Test workflow\u2019": {
+                    "main": [
+                        [
+                            {
+                                "node": "Cisco Meraki Get ORG",
+                                "type": "main",
+                                "index": 0
+                            }
+                        ]
+                    ]
+                },
+                "Cisco Meraki Get ORG": {
+                    "main": [
+                        [
+                            {
+                                "node": "Cisco Meraki Org Device",
+                                "type": "main",
+                                "index": 0
+                            }
+                        ]
+                    ]
+                },
+                "Cisco Meraki Org Device": {
+                    "main": [
+                        [
+                            {
+                                "node": "Convert to File",
+                                "type": "main",
+                                "index": 0
+                            }
+                        ]
+                    ]
+                },
+                "Convert to File": {
+                    "main": [
+                        []
+                    ]
+                }
+            },
+            "settings": {
+                "executionOrder": "v1"
+            },
+            "staticData": null,
+            "meta": null,
+            "pinData": null,
+            "versionId": "41af23f0-0265-402f-a461-8ef866d02db8",
+            "triggerCount": 0,
+            "tags": []
+        },
+        {
+            "createdAt": "2024-11-23T08:20:04.013Z",
+            "updatedAt": "2024-11-23T08:20:04.013Z",
+            "id": "v3QzvcoVBVqRFBpW",
+            "name": "new workflow",
+            "active": false,
+            "nodes": [
+                {
+                    "parameters": {},
+                    "id": "1401071e-bc91-4b71-88dc-c3188e0f921f",
+                    "name": "When clicking Test workflow",
+                    "type": "n8n-nodes-base.manualTrigger",
+                    "typeVersion": 1,
+                    "position": [
+                        340,
+                        320
+                    ]
+                }
+            ],
+            "connections": {
+                "main": [
+                    {
+                        "node": "Jira",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            },
+            "settings": {
+                "saveExecutionProgress": true,
+                "saveManualExecutions": true,
+                "saveDataErrorExecution": "all",
+                "saveDataSuccessExecution": "all",
+                "executionTimeout": 3600,
+                "errorWorkflow": "VzqKEW0ShTXA5vPj",
+                "timezone": "America/New_York",
+                "executionOrder": "v1"
+            },
+            "staticData": {
+                "lastId": 1
+            },
+            "meta": null,
+            "pinData": null,
+            "versionId": "ec44be58-cc7d-4b07-9cf7-e4d03f3210f2",
+            "triggerCount": 0,
+            "tags": []
+        },
+        {
+            "createdAt": "2024-11-23T08:23:46.736Z",
+            "updatedAt": "2024-11-23T08:23:46.736Z",
+            "id": "w0UGWIww2pUFXVvn",
+            "name": "new workflow",
+            "active": false,
+            "nodes": [
+                {
+                    "parameters": {},
+                    "id": "1401071e-bc91-4b71-88dc-c3188e0f921f",
+                    "name": "When clicking \u2018Test workflow\u2019",
+                    "type": "n8n-nodes-base.manualTrigger",
+                    "typeVersion": 1,
+                    "position": [
+                        340,
+                        320
+                    ]
+                },
+                {
+                    "parameters": {
+                        "operation": "xlsx",
+                        "binaryPropertyName": "=data",
+                        "options": {
+                            "fileName": ""
+                        }
+                    },
+                    "id": "f1e5f457-cc03-490e-9808-4f34e1e6fe58",
+                    "name": "Convert to File",
+                    "type": "n8n-nodes-base.convertToFile",
+                    "typeVersion": 1.1,
+                    "position": [
+                        1000,
+                        320
+                    ]
+                },
+                {
+                    "parameters": {
+                        "curlImport": "",
+                        "httpVariantWarning": "",
+                        "method": "GET",
+                        "url": "https://api.meraki.com/api/v1/organizations",
+                        "": "",
+                        "authentication": "predefinedCredentialType",
+                        "nodeCredentialType": "ciscoMerakiApi",
+                        "provideSslCertificates": false,
+                        "sendQuery": false,
+                        "sendHeaders": false,
+                        "sendBody": false,
+                        "options": {},
+                        "infoMessage": ""
+                    },
+                    "id": "5a59004e-74bb-4aee-bae3-044cd89ea459",
+                    "name": "Cisco Meraki Get ORG",
+                    "type": "n8n-nodes-base.httpRequest",
+                    "typeVersion": 4.2,
+                    "position": [
+                        560,
+                        320
+                    ],
+                    "credentials": {
+                        "ciscoMerakiApi": {
+                            "id": "Za2Ov4tAWKKILQT1",
+                            "name": "Cisco Meraki account"
+                        }
+                    }
+                }
+            ],
+            "connections": {
+                "When clicking \u2018Test workflow\u2019": {
+                    "main": [
+                        [
+                            {
+                                "node": "Cisco Meraki Get ORG",
+                                "type": "main",
+                                "index": 0
+                            }
+                        ]
+                    ]
+                },
+                "Cisco Meraki Get ORG": {
+                    "main": [
+                        [
+                            {
+                                "node": "Cisco Meraki Org Device",
+                                "type": "main",
+                                "index": 0
+                            }
+                        ]
+                    ]
+                },
+                "Cisco Meraki Org Device": {
+                    "main": [
+                        [
+                            {
+                                "node": "Convert to File",
+                                "type": "main",
+                                "index": 0
+                            }
+                        ]
+                    ]
+                },
+                "Convert to File": {
+                    "main": [
+                        []
+                    ]
+                }
+            },
+            "settings": {
+                "executionOrder": "v1"
+            },
+            "staticData": null,
+            "meta": null,
+            "pinData": null,
+            "versionId": "36f09119-5b38-4c46-b423-92eed3b8c4f2",
+            "triggerCount": 0,
+            "tags": []
+        },
+        {
+            "createdAt": "2024-11-23T08:10:41.489Z",
+            "updatedAt": "2024-11-23T08:10:41.489Z",
+            "id": "wzx0kKci69Dd3B4x",
+            "name": "Workflow 1",
+            "active": false,
+            "nodes": [
+                {
+                    "id": "0f5532f9-36ba-4bef-86c7-30d607400b15",
+                    "name": "Jira",
+                    "webhookId": "string",
+                    "disabled": true,
+                    "notesInFlow": true,
+                    "notes": "string",
+                    "type": "n8n-nodes-base.Jira",
+                    "typeVersion": 1,
+                    "executeOnce": false,
+                    "alwaysOutputData": false,
+                    "retryOnFail": false,
+                    "maxTries": 0,
+                    "waitBetweenTries": 0,
+                    "continueOnFail": false,
+                    "onError": "stopWorkflow",
+                    "position": [
+                        -100,
+                        80
+                    ],
+                    "parameters": {
+                        "additionalProperties": {}
+                    },
+                    "credentials": {
+                        "jiraSoftwareCloudApi": {
+                            "id": "35",
+                            "name": "jiraApi"
+                        }
+                    }
+                }
+            ],
+            "connections": {
+                "main": [
+                    {
+                        "node": "Jira",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            },
+            "settings": {
+                "saveExecutionProgress": true,
+                "saveManualExecutions": true,
+                "saveDataErrorExecution": "all",
+                "saveDataSuccessExecution": "all",
+                "executionTimeout": 3600,
+                "errorWorkflow": "VzqKEW0ShTXA5vPj",
+                "timezone": "America/New_York",
+                "executionOrder": "v1"
+            },
+            "staticData": {
+                "lastId": 1
+            },
+            "meta": null,
+            "pinData": null,
+            "versionId": "2eeb3a51-0244-46a4-8de3-81431a902147",
+            "triggerCount": 0,
+            "tags": []
+        },
+        {
+            "createdAt": "2024-11-23T07:36:37.952Z",
+            "updatedAt": "2024-11-23T07:46:16.000Z",
+            "id": "zBMdcU8zwRYVtpRH",
+            "name": "My workflow",
+            "active": false,
+            "nodes": [
+                {
+                    "parameters": {},
+                    "id": "1401071e-bc91-4b71-88dc-c3188e0f921f",
+                    "name": "When clicking \u2018Test workflow\u2019",
+                    "type": "n8n-nodes-base.manualTrigger",
+                    "typeVersion": 1,
+                    "position": [
+                        340,
+                        320
+                    ]
+                },
+                {
+                    "parameters": {
+                        "operation": "xlsx",
+                        "binaryPropertyName": "=data",
+                        "options": {
+                            "fileName": ""
+                        }
+                    },
+                    "id": "f1e5f457-cc03-490e-9808-4f34e1e6fe58",
+                    "name": "Convert to File",
+                    "type": "n8n-nodes-base.convertToFile",
+                    "typeVersion": 1.1,
+                    "position": [
+                        1000,
+                        320
+                    ]
+                },
+                {
+                    "parameters": {
+                        "curlImport": "",
+                        "httpVariantWarning": "",
+                        "method": "GET",
+                        "url": "https://api.meraki.com/api/v1/organizations",
+                        "": "",
+                        "authentication": "predefinedCredentialType",
+                        "nodeCredentialType": "ciscoMerakiApi",
+                        "provideSslCertificates": false,
+                        "sendQuery": false,
+                        "sendHeaders": false,
+                        "sendBody": false,
+                        "options": {},
+                        "infoMessage": ""
+                    },
+                    "id": "5a59004e-74bb-4aee-bae3-044cd89ea459",
+                    "name": "Cisco Meraki Get ORG",
+                    "type": "n8n-nodes-base.httpRequest",
+                    "typeVersion": 4.2,
+                    "position": [
+                        560,
+                        320
+                    ],
+                    "extendsCredential": "ciscoMerakiApi",
+                    "credentials": {
+                        "ciscoMerakiApi": {
+                            "id": "Za2Ov4tAWKKILQT1",
+                            "name": "Cisco Meraki account"
+                        }
+                    }
+                },
+                {
+                    "parameters": {
+                        "curlImport": "",
+                        "httpVariantWarning": "",
+                        "method": "GET",
+                        "url": "=https://api.meraki.com/api/v1/organizations/{{ $json.id }}/devices",
+                        "": "",
+                        "authentication": "predefinedCredentialType",
+                        "nodeCredentialType": "ciscoMerakiApi",
+                        "provideSslCertificates": false,
+                        "sendQuery": false,
+                        "sendHeaders": false,
+                        "sendBody": false,
+                        "options": {},
+                        "infoMessage": ""
+                    },
+                    "id": "f4d6691b-c2a2-4818-8d7b-042e99751661",
+                    "name": "Cisco Meraki Org Device",
+                    "type": "n8n-nodes-base.httpRequest",
+                    "typeVersion": 4.2,
+                    "position": [
+                        780,
+                        320
+                    ],
+                    "extendsCredential": "ciscoMerakiApi",
+                    "credentials": {
+                        "ciscoMerakiApi": {
+                            "id": "Za2Ov4tAWKKILQT1",
+                            "name": "Cisco Meraki account"
+                        }
+                    }
+                }
+            ],
+            "connections": {
+                "When clicking \u2018Test workflow\u2019": {
+                    "main": [
+                        [
+                            {
+                                "node": "Cisco Meraki Get ORG",
+                                "type": "main",
+                                "index": 0
+                            }
+                        ]
+                    ]
+                },
+                "Cisco Meraki Get ORG": {
+                    "main": [
+                        [
+                            {
+                                "node": "Cisco Meraki Org Device",
+                                "type": "main",
+                                "index": 0
+                            }
+                        ]
+                    ]
+                },
+                "Cisco Meraki Org Device": {
+                    "main": [
+                        [
+                            {
+                                "node": "Convert to File",
+                                "type": "main",
+                                "index": 0
+                            }
+                        ]
+                    ]
+                },
+                "Convert to File": {
+                    "main": [
+                        []
+                    ]
+                }
+            },
+            "settings": {
+                "executionOrder": "v1"
+            },
+            "staticData": null,
+            "meta": {
+                "templateCredsSetupCompleted": true
+            },
+            "pinData": {},
+            "versionId": "eea8dcac-8583-4a37-9238-a84a4b4bc490",
+            "triggerCount": 0,
+            "tags": []
+        }
+    ],
+    "nextCursor": null
+}

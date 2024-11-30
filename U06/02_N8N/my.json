@@ -1,0 +1,138 @@
+{
+    "name": "new workflow",
+    "nodes": [
+        {
+            "parameters": {},
+            "id": "1401071e-bc91-4b71-88dc-c3188e0f921f",
+            "name": "When clicking \u2018Test workflow\u2019",
+            "type": "n8n-nodes-base.manualTrigger",
+            "typeVersion": 1,
+            "position": [
+                340,
+                320
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "xlsx",
+                "binaryPropertyName": "=data",
+                "options": {
+                    "fileName": ""
+                }
+            },
+            "id": "f1e5f457-cc03-490e-9808-4f34e1e6fe58",
+            "name": "Convert to File",
+            "type": "n8n-nodes-base.convertToFile",
+            "typeVersion": 1.1,
+            "position": [
+                1000,
+                320
+            ]
+        },
+        {
+            "parameters": {
+                "curlImport": "",
+                "httpVariantWarning": "",
+                "method": "GET",
+                "url": "https://api.meraki.com/api/v1/organizations",
+                "": "",
+                "authentication": "predefinedCredentialType",
+                "nodeCredentialType": "ciscoMerakiApi",
+                "provideSslCertificates": false,
+                "sendQuery": false,
+                "sendHeaders": false,
+                "sendBody": false,
+                "options": {},
+                "infoMessage": ""
+            },
+            "id": "5a59004e-74bb-4aee-bae3-044cd89ea459",
+            "name": "Cisco Meraki Get ORG",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                560,
+                320
+            ],
+            "credentials": {
+                "ciscoMerakiApi": {
+                    "id": "Za2Ov4tAWKKILQT1",
+                    "name": "Cisco Meraki account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "curlImport": "",
+                "httpVariantWarning": "",
+                "method": "GET",
+                "url": "=https://api.meraki.com/api/v1/organizations/{{ $json.id }}/devices",
+                "": "",
+                "authentication": "predefinedCredentialType",
+                "nodeCredentialType": "ciscoMerakiApi",
+                "provideSslCertificates": false,
+                "sendQuery": false,
+                "sendHeaders": false,
+                "sendBody": false,
+                "options": {},
+                "infoMessage": ""
+            },
+            "id": "f4d6691b-c2a2-4818-8d7b-042e99751661",
+            "name": "Cisco Meraki Org Device",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                780,
+                320
+            ],
+            "credentials": {
+                "ciscoMerakiApi": {
+                    "id": "Za2Ov4tAWKKILQT1",
+                    "name": "Cisco Meraki account"
+                }
+            }
+        }
+    ],
+    "connections": {
+        "When clicking \u2018Test workflow\u2019": {
+            "main": [
+                [
+                    {
+                        "node": "Cisco Meraki Get ORG",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Cisco Meraki Get ORG": {
+            "main": [
+                [
+                    {
+                        "node": "Cisco Meraki Org Device",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Cisco Meraki Org Device": {
+            "main": [
+                [
+                    {
+                        "node": "Convert to File",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Convert to File": {
+            "main": [
+                []
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}
