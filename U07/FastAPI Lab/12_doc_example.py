@@ -1,7 +1,6 @@
 # 添加文档示例
 
 import uvicorn
-from typing import Annotated
 from fastapi import FastAPI
 from pydantic import BaseModel
 

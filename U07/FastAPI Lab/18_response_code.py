@@ -17,20 +17,20 @@ class UpdateConfigRequest(BaseModel):
     config: dict
 
 
-@app.post("/update-config")
-async def update_config(request: UpdateConfigRequest):
+@app.put("/update-config")
+async def update_config(data: UpdateConfigRequest):
     # 检查设备是否存在
-    if request.device_id not in devices:
-        raise HTTPException(status_code=404, detail=f"Device {request.device_id} not found")
+    if data.device_id not in devices:
+        raise HTTPException(status_code=404, detail=f"Device {data.device_id} not found")
 
     # 检查配置是否有效（仅作为示例，实际验证逻辑更复杂）
-    if not request.config or not isinstance(request.config, dict):
+    if not data.config or not isinstance(data.config, dict):
         raise HTTPException(status_code=400, detail="Invalid configuration format")
 
     try:
         # 模拟更新设备配置的逻辑
-        devices[request.device_id]["config"] = request.config
-        return {"message": f"Configuration updated successfully for {request.device_id}"}
+        devices[data.device_id]["config"] = data.config
+        return {"message": f"Configuration updated successfully for {data.device_id}"}
     except Exception as e:
         # 捕获任何其他异常，返回500
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
@@ -38,7 +38,7 @@ async def update_config(request: UpdateConfigRequest):
 
 @app.get("/")
 async def root():
-    return {"message": "Network Automation API is running"}
+    return devices
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=5000, log_level="info")

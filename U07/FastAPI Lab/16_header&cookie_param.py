@@ -6,8 +6,8 @@ app = FastAPI()
 
 @app.get("/network/automation")
 async def network_automation(
-    user_agent: Annotated[str | None, Header(default=None, description="Client's User-Agent")],
-    session_token: Annotated[str | None, Cookie(default=None, description="Session authentication token")],
+    user_agent: Annotated[str | None, Header(description="Client's User-Agent")],
+    session_token: Annotated[str | None, Cookie(description="Session authentication token")],
 ):
     # 检查用户代理
     if user_agent:

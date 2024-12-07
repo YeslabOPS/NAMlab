@@ -1,18 +1,17 @@
 import requests
 
-url = f'http://127.0.0.1:5000//dna/intent/api/v2/template-programmer/template/deploy'
+# 设置请求的 URL
+url = "http://localhost:5000/upload/"
 
-data = {'mainTemplateId': '001',
-        'forcePushTemplate': True,
-        'isComposite': 'yes',
-        'memberTemplateDeploymentInfo': [{'targetInfo': ['1.1.1.1', '2.2.2.2'],
-                                          'hostName': 'YESLAB',
-                                          'id': '123',
-                                          'type': 'Switch',
-                                          'versionedTemplateId': '1',
-                                          'resourceParams': {'a':1},
-                                          'params': {'b':1}
-                                          }]}
+# 打开要上传的文件
+with open("1.txt", "rb") as f:
+    # 发送 POST 请求，包含文件
+    response = requests.post(url, files={"file": ("1.txt", f)})
 
-response = requests.post(url, json=data)
-print(response.json())
+# 检查响应状态码
+if response.status_code == 200:
+    print("文件上传成功！")
+    print(response.json())  # 打印响应内容
+else:
+    print("文件上传失败，状态码：", response.status_code)
+    print(response.text)  # 打印错误信息
