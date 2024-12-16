@@ -1,0 +1,23 @@
+enable
+config t
+hostname SZDC
+interface G1
+ip address 192.168.0.221 255.255.255.0
+no shut
+exit
+interface G4
+ip address 1.1.1.1 255.255.255.0
+no shut
+exit
+ip domain name yeslab.net
+aaa new-model
+username ciscouser password 0 cisco@123
+username ciscouser privilege 15
+crypto key generate rsa
+1024
+line vty 0 4
+transport input all
+privilege level 15
+exit
+exit
+write
