@@ -7,7 +7,7 @@ app = FastAPI()
 @app.get("/network/automation")
 async def network_automation(
     user_agent: Annotated[str | None, Header(description="Client's User-Agent")],
-    session_token: Annotated[str | None, Cookie(description="Session authentication token")],
+    session_token: Annotated[str | None, Cookie(description="Session authentication token")] = None,
 ):
     # 检查用户代理
     if user_agent:
@@ -16,6 +16,7 @@ async def network_automation(
         raise HTTPException(status_code=400, detail="User-Agent header is required")
 
     # 检查会话令牌
+    print(f"Session token: {session_token}")
     if session_token != "valid_token":
         raise HTTPException(status_code=403, detail="Invalid or missing session token")
 

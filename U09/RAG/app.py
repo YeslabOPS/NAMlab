@@ -3,34 +3,12 @@ from file_loader import *
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-# 初始化RAG系统和AI客户端
+# 初始化RAG系统
 rag = RagHand()
-ai_client = init_ollama()
-
 app = FastAPI()
 
-# 定义请求数据模型
-class SavePDFRequest(BaseModel):
-    """保存PDF文件的请求模型
-    
-    Attributes:
-        pdf_path: PDF文件的路径
-        faiss_index_name: FAISS索引文件的名称
-    """
-    pdf_path: str
-    faiss_index_name: str
-
-class AskRequest(BaseModel):
-    """问答请求的数据模型
-    
-    Attributes:
-        query_text: 用户的问题文本
-        faiss_index_name: 要查询的FAISS索引文件名
-        top_k: 返回最相关的前k个文档片段，默认为3
-    """
-    query_text: str
-    faiss_index_name: str
-    top_k: int = 3
+# 初始化AI客户端
+ai_client, ai_model = choice_ai(use_deepseek=True)
 
 # 核心功能函数
 def search(query_text, book_file, top_k):
@@ -64,6 +42,29 @@ def generate_answer(query_text, relevant_docs):
     Please answer the question:\n{query_text}.'''
     response = ai_client.chat(model=ollama_model, messages=[{"role": "user", "content": prompt}])
     return response.message.content
+
+# 定义请求数据模型
+class SavePDFRequest(BaseModel):
+    """保存PDF文件的请求模型
+    
+    Attributes:
+        pdf_path: PDF文件的路径
+        faiss_index_name: FAISS索引文件的名称
+    """
+    pdf_path: str
+    faiss_index_name: str
+
+class AskRequest(BaseModel):
+    """问答请求的数据模型
+    
+    Attributes:
+        query_text: 用户的问题文本
+        faiss_index_name: 要查询的FAISS索引文件名
+        top_k: 返回最相关的前k个文档片段，默认为3
+    """
+    query_text: str
+    faiss_index_name: str
+    top_k: int = 3  
 
 # API端点定义
 @app.post("/api/savepdf")
